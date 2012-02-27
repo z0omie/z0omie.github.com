@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="helpers.js"></script>
+    <script type="text/javascript" src="Graph.js"></script>
+</head>
+<body>
+    Оценен
+    <div id="mainContainer" style="width: 100%;">
+        <div id="menu" style="float: left; width: 200px;">
+            <a href="#" onclick="myGraph.drawData(1); return false;">Профессиональный рост</a><br />
+            <a href="#" onclick="myGraph.drawData(2); return false;">Соц пакет</a><br />
+            <a href="#" onclick="myGraph.drawData(3); return false;">Команда</a><br />
+            <a href="#">Планы на пол года</a><br />
+            <a href="#">Уровень зарплаты</a><br />
+            <a href="#">Компания как бренд</a><br />
+            <a href="#">Идеальный работодатель</a><br />
+            <a href="#">Рабочее место</a>
+        </div>
+        <div id="chart" style="float: left">
+            <canvas id="myCanvas"></canvas>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var config = {
+            width: 900,
+            height: 600,
+            axisX: {
+                max: 50,
+                points: [15, 20, 25, 30, 35, 40, 45, 50],
+                min: 15
+
+            },
+            axisY: {
+                max: 3,
+                min: 0,
+                points: [0, 1, 2, 3],
+                points2: [
+			         { val: 0, lbl: "0" },
+			         { val: 0.6, lbl: "20" },
+			         { val: 1.2, lbl: "40" },
+			         { val: 1.8, lbl: "60" },
+			         { val: 2.4, lbl: "80" },
+			         { val: 3, lbl: "100%"}]
+            },
+            data: [
+		       		{
+		       		    color: "rgb(102,217,2)",
+		       		    label: "Менеджмент",
+		       		    id: "1",
+		       		    points: [
+		       			         { x: 18, y: 1.2, percent: 42 },
+		       			         { x: 28.4, y: 2, percent: 70 },
+		       			         { x: 40.4, y: 0.8, percent: 10 }
+		       			        ]
+		       		},
+		       		{
+		       		    color: "rgb(0,150,245)",
+		       		    label: "Менеджер",
+		       		    id: "2",
+		       		    points: [{ x: 28, y: 2.2, percent: 15}]
+		       		},
+		       		{
+		       		    color: "rgb(241,220,45)",
+		       		    label: "Программист",
+		       		    id: "3",
+		       		    points: [
+		       			         { x: 19, y: 0.2, percent: 12 },
+		       			         { x: 24, y: 0.6, percent: 15 },
+		       			         { x: 28, y: 3, percent: 1}]
+		       		}
+
+		       ]
+        };
+
+
+        var myGraph = new Graph("#myCanvas", config);
+    </script>
+</body>
+</html>
